@@ -23,6 +23,12 @@
       "name": "dawd",
       "description": "awdaw",
       "element": "wind"
+    },
+    {
+      "id": "4f89fed1-78cb-4170-a03b-c11b0f44e94a",
+      "name": "цвфц",
+      "description": "цвфц",
+      "element": "water"
     }
   ],
   "filters": [

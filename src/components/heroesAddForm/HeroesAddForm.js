@@ -20,7 +20,7 @@ const HeroesAddForm = () => {
     const {request} = useHttp();
 
     const dispatch = useDispatch();
-    const {filters, filtersLoadingStatus} = useSelector(state => state);
+    const {filters, filtersLoadingStatus} = useSelector(state => state.filters);
 
     const onSubmitHandler = (e) => {
         e.preventDefault();     //блокирую перезагрузку

@@ -1,4 +1,5 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
+import ReduxThunk from 'redux-thunk'
 import heroes from '../reducers/heroes';
 import filters from '../reducers/filters';
 
@@ -20,27 +21,27 @@ const stringMiddleware = (store) => (next) => (action) => {
 //Enhancer - это усилитель нашего store (расширение store)
 //Такми образом добиваемся результата, что при передаче в функцию dispatch() строку приложение нормально реагирует
 //Пример в файле HeroesList.js в useEffect()
-const enhancer = (createStore) => (...args) => {
-    const store = createStore(...args);
+// const enhancer = (createStore) => (...args) => {
+//     const store = createStore(...args);
 
-    const oldDispatch = store.dispatch; // нужно сохранить оригинальный dispatch
-    store.dispatch = (action) => { //меняем его значение. переопределяем его действие
-        if (typeof action === 'string') {
-            return oldDispatch({
-                type: action
-            });
-        }
+//     const oldDispatch = store.dispatch; // нужно сохранить оригинальный dispatch
+//     store.dispatch = (action) => { //меняем его значение. переопределяем его действие
+//         if (typeof action === 'string') {
+//             return oldDispatch({
+//                 type: action
+//             });
+//         }
 
-        return oldDispatch(action);
-    }
+//         return oldDispatch(action);
+//     }
 
-    return store;
-}
+//     return store;
+// }
 
 const store = createStore(
     combineReducers({heroes, filters}),
     compose(
-        applyMiddleware(stringMiddleware),
+        applyMiddleware(ReduxThunk, stringMiddleware),
         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     )
     // compose(                    //При подключении как Middleware, так и Enhancer'ов нужно соблюдать правильный порядок их работы

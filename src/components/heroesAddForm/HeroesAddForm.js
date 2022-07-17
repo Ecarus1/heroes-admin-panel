@@ -3,7 +3,7 @@ import { useHttp } from "../../hooks/http.hook";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { heroCreated } from "../../actions";
+import { heroCreated } from "../heroesList/heroesSlice";
 
 // Задача для этого компонента:
 // Реализовать создание нового героя с введенными данными. Он должен попадать

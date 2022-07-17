@@ -19,16 +19,22 @@
       "element": "water"
     },
     {
-      "id": "80b980fe-b9d3-4426-9b4e-0b04a489b704",
-      "name": "wdaw",
-      "description": "awdawd",
+      "id": "a06a5cee-c3b2-4358-a0ac-724fc66bc270",
+      "name": "dawd",
+      "description": "awdaw",
+      "element": "wind"
+    },
+    {
+      "id": "4f89fed1-78cb-4170-a03b-c11b0f44e94a",
+      "name": "цвфц",
+      "description": "цвфц",
       "element": "water"
     },
     {
-      "id": "3db5e2fe-3983-4026-b509-2003de6e0e58",
-      "name": "efdrdrh",
-      "description": "drhdrh",
-      "element": "earth"
+      "id": "699cea67-8522-4a47-bc22-711bcea3bb3c",
+      "name": "Maniash",
+      "description": "dwadw",
+      "element": "wind"
     }
   ],
   "filters": [

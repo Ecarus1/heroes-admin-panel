@@ -3,7 +3,10 @@ import { useHttp } from "../../hooks/http.hook";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import store from '../../store'
+
 import { heroCreated } from "../heroesList/heroesSlice";
+import { selectAll } from "../heroesFilters/filtersSlice";
 
 // Задача для этого компонента:
 // Реализовать создание нового героя с введенными данными. Он должен попадать
@@ -17,10 +20,10 @@ const HeroesAddForm = () => {
     const [heroDescr, setHeroDescr] = useState('');
     const [heroElement, setHeroElement] = useState('');
 
-    const {request} = useHttp();
-
+    const {filtersLoadingStatus} = useSelector(state => state.filters);
+    const filters = selectAll(store.getState())
     const dispatch = useDispatch();
-    const {filters, filtersLoadingStatus} = useSelector(state => state.filters);
+    const {request} = useHttp();
 
     const onSubmitHandler = (e) => {
         e.preventDefault();     //блокирую перезагрузку
@@ -51,6 +54,7 @@ const HeroesAddForm = () => {
 
         if (filters.length > 0) {
             return filters.map(({name, label}) => {
+                // eslint-disable-next-line
                 if (name === 'all') return;
 
                 return <option key={name} value={name}>{label}</option>

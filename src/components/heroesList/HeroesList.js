@@ -1,26 +1,12 @@
 import {useHttp} from '../../hooks/http.hook';
 import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createSelector } from '@reduxjs/toolkit';
 
-import { heroDeleted, fetchHeroes } from './heroesSlice';
+import { heroDeleted, fetchHeroes, filteredHeroesSelector } from './heroesSlice';
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
 
 const HeroesList = () => {
-
-    const filteredHeroesSelector = createSelector( //Производим мемоизацию
-        (state) => state.filters.activeFilter,
-        (state) => state.heroes.heroes,
-        (filter, heroes) => {
-            if (filter === 'all') {
-                return heroes;
-            } else {
-                return heroes.filter(item => item.element === filter)
-            }
-        }
-    );
-
     // const filteredHeroes = useSelector(state => { // Постоянный рендер при клике на одну и туже кнопку фильтра
     //     if (state.filters.activeFilter === 'all') {
     //         console.log('rend')
@@ -29,6 +15,8 @@ const HeroesList = () => {
     //         return state.heroes.heroes.filter(item => item.element === state.filters.activeFilter)
     //     }
     // });
+
+
     const filteredHeroes = useSelector(filteredHeroesSelector)
     const heroesLoadingStatus = useSelector(state => state.heroes.heroesLoadingStatus);
     const dispatch = useDispatch();
